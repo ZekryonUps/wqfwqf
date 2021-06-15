@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Discord.Client();
+const token = "ODU0NDQwMjc0OTg1MjIyMTg1.YMj9hA.7CO-prUtSh6NrF6WsWbsg1k4kOk";
+const prefix = "gg"
 const config = require('./config.json');
 const superagent = require('superagent'); //npm i superagent
 const { MusicBot } = require('discord-music-system'); // Require the best package ever created on NPM (= require discord-music-system)
@@ -131,11 +133,11 @@ client.on('message', message => {
 });
 
 client.on('message', (message) => {
-  if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content
     .toLowerCase()
-    .slice(process.env.prefix.length)
+    .slice(prefix.length)
     .trim()
     .split(/\s+/);
   const [command, input] = args;
@@ -188,4 +190,4 @@ client.on('message', (message) => {
   }
 });
 
-client.login(process.env.token);
+client.login(token);
